@@ -1,0 +1,44 @@
+.data
+    x: .long 5
+    y: .long 13
+    suma: .space 4
+    diferenta: .space 4
+    produs: .space 4
+    catul: .space 4
+    restul: .space 4
+
+.text
+
+.global main
+
+main:
+
+et_suma:    
+    mov x, %eax
+    add y, %eax
+    mov %eax, suma
+    
+et_diferenta:
+
+    mov y, %eax
+    sub x, %eax
+    mov %eax, diferenta
+
+et_produs:
+    
+    mov x, %eax
+    mull y 
+    mov %eax, produs
+
+et_impartire:
+    
+    mov $0, %edx
+    mov y, %eax
+    divl x
+    mov %eax, catul
+    mov %edx, restul
+    
+et_exit:
+    mov $1, %eax
+    mov $0, %ebx
+    int $0x80
